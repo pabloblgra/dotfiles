@@ -1,0 +1,56 @@
+[build-dependencies]
+system-deps = "6"
+
+[dependencies]
+libc = "0.2"
+
+[dependencies.gio]
+package = "gio-sys"
+version = "0.16"
+path = "../../gio/sys"
+
+[dependencies.glib]
+package = "glib-sys"
+version = "0.16"
+path = "../../glib/sys"
+
+[dependencies.gobject]
+package = "gobject-sys"
+version = "0.16"
+path = "../../glib/gobject-sys"
+
+[dev-dependencies]
+shell-words = "1.0.0"
+tempfile = "3"
+
+[features]
+dox = ["glib/dox", "gobject/dox", "gio/dox"]
+v2_40 = []
+v2_42 = ["v2_40"]
+
+[lib]
+name = "gdk_pixbuf_sys"
+
+[package]
+authors = ["The gtk-rs Project Developers"]
+build = "build.rs"
+description = "FFI bindings to libgdk_pixbuf-2.0"
+homepage = "http://gtk-rs.org/"
+keywords = ["gdk-pixbuf", "ffi", "gtk-rs", "gnome"]
+license = "MIT"
+name = "gdk-pixbuf-sys"
+repository = "https://github.com/gtk-rs/gtk-rs-core"
+version = "0.16.3"
+edition = "2021"
+rust-version = "1.63"
+[package.metadata.docs.rs]
+features = ["dox"]
+[package.metadata.system-deps.gdk_pixbuf_2_0]
+name = "gdk-pixbuf-2.0"
+version = "2.36.8"
+
+[package.metadata.system-deps.gdk_pixbuf_2_0.v2_40]
+version = "2.40"
+
+[package.metadata.system-deps.gdk_pixbuf_2_0.v2_42]
+version = "2.42"

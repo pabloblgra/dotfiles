@@ -1,0 +1,5 @@
+[v1]
+"mdbook 0.4.37 (registry+https://github.com/rust-lang/crates.io-index)" = ["mdbook"]
+"rustlings 6.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["rustlings"]
+"rustyvibes 1.0.9 (registry+https://github.com/rust-lang/crates.io-index)" = ["rustyvibes"]
+"sosd 0.0.1 (git+https://github.com/SergioRibera/soft_osd#b6e7932cd325928116bcc183139495637e9b055a)" = ["sosd"]

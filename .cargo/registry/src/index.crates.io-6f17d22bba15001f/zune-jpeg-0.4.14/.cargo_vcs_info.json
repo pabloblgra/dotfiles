@@ -1,0 +1,7 @@
+{
+  "git": {
+    "sha1": "80e195719a5d3e1f4b607dbf094f2b8f321c9e1a",
+    "dirty": true
+  },
+  "path_in_vcs": "crates/zune-jpeg"
+}

@@ -1,0 +1,49 @@
+[package]
+name = "srtemplate"
+version = "0.3.0"
+edition = "2021"
+description = "Template String made with nom parser"
+categories = ["template-engine", "text-processing"]
+keywords = ["runtime", "string", "template"]
+authors = ["Sergio Ribera"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/SergioRibera/srtemplate"
+homepage = "https://github.com/SergioRibera/srtemplate"
+readme = "README.md"
+include = ["**/**/*.rs", "Cargo.toml", "rust-toolchain.toml", "rustfmt.toml"]
+exclude = ["examples/real_world/"]
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[profile.dev]
+opt-level = 1
+incremental = true
+
+[profile.release]
+strip = true
+lto = "thin"
+panic = 'abort'
+opt-level = 3
+codegen-units = 1
+
+[features]
+default = ["text", "os", "math", "typed_args"]
+debug = ["dep:log"]
+text = []
+os = []
+math = ["dep:paste"]
+typed_args = []
+
+[dependencies]
+nom = "7.1.3"
+dashmap = "5.5.3"
+thiserror = "1.0.49"
+paste = { version = "1.0.14", optional = true }
+log = { version = "0.4.20", optional = true }
+
+[[example]]
+name = "parse_args"
+required-features = ["typed_args"]
+path = "./examples/parse_args.rs"

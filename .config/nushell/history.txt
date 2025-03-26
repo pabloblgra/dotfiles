@@ -1,0 +1,6 @@
+clear
+lsa
+ls 
+clear
+ls -lsa
+nushell

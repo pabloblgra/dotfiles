@@ -1,0 +1,134 @@
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            model ""
+            rules ""
+            variant "altgr-intl"
+        }
+        repeat-delay 600
+        repeat-rate 25
+        track-layout "global"
+    }
+    touchpad {
+        tap
+        dwt
+        dwtp
+        natural-scroll
+        accel-speed 0.000000
+        scroll-method "two-finger"
+        tap-button-map "left-right-middle"
+    }
+    mouse { accel-speed 0.000000; }
+    trackpoint { accel-speed 0.000000; }
+    tablet
+    touch
+    warp-mouse-to-focus
+    focus-follows-mouse
+}
+output "HDMI-A-1" {
+  scale 1.000000
+  transform "normal"
+  position x=0 y=0
+  mode "1920x1080@60.00000"
+  }
+ output "eDP-1" {
+  scale  1.000000
+  transform "normal"
+  position x=1920 y=0
+}
+screenshot-path "~/Pictures/Screenshot/%Y-%m-%d %H-%M-%S.png"
+prefer-no-csd
+layout {
+    gaps 7
+    struts {
+        left 5
+        right 5
+        top 5
+        bottom 5
+    }
+    focus-ring { off; }
+    border { off; }
+    default-column-width { proportion 1.000000; }
+    preset-column-widths {
+        proportion 0.333333
+        proportion 0.500000
+        proportion 0.666667
+    }
+    center-focused-column "never"
+}
+cursor {
+    xcursor-theme "default"
+    xcursor-size 24
+}
+hotkey-overlay { skip-at-startup; }
+environment {
+    "QT_QPA_PLATFORM" "wayland"
+    "QT_WAYLAND_DISABLE_WINDOWDECORATION" "1"
+}
+binds {
+    "Caps_Lock" allow-when-locked=true cooldown-ms=500 { spawn "swayosd-client" "--caps-lock"; }
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+B { spawn "nu" "/home/s4rch/.config/eww/scripts/extras.nu" "toggle" "sidebar"; }
+    Mod+C { spawn "hyprpicker" "-a" "-f" "hex"; }
+    Mod+Comma { consume-window-into-column; }
+    Mod+E { spawn "cosmic-files"; }
+    Mod+F { maximize-column; }
+    Mod+H { focus-column-or-monitor-left; }
+    Mod+J { focus-window-or-workspace-down; }
+    Mod+K { focus-window-or-workspace-up; }
+    Mod+L { focus-column-or-monitor-right; }
+    Mod+M { spawn "nu" "/home/s4rch/.config/eww/scripts/extras.nu" "toggle" "screenkey"; }
+    Mod+P { spawn "nu" "/home/s4rch/.config/eww/scripts/extras.nu" "toggle" "power-screen"; }
+    Mod+Period { expel-window-from-column; }
+    Mod+Return { spawn "alacritty" "-e" "nu"; }
+    Mod+S { screenshot-window; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+Shift+H { move-column-left-or-to-monitor-left; }
+    Mod+Shift+J { move-window-down-or-to-workspace-down; }
+    Mod+Shift+K { move-window-up-or-to-workspace-up; }
+    Mod+Shift+L { move-column-right-or-to-monitor-right; }
+    Mod+Shift+Return { spawn "alacritty" "-e" "nu" "--no-history"; }
+    Mod+Shift+S { screenshot; }
+    Mod+Shift+T { toggle-debug-tint; }
+    Mod+Tab { spawn "anyrun"; }
+    Mod+W { close-window; }
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
+    "Num_Lock" allow-when-locked=true cooldown-ms=500 { spawn "swayosd-client" "--num-lock"; }
+    XF86AudioLowerVolume allow-when-locked=true cooldown-ms=0 { spawn "swayosd-client" "--output-volume" "lower"; }
+    XF86AudioMicMute allow-when-locked=true cooldown-ms=500 { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
+    XF86AudioMute allow-when-locked=true cooldown-ms=500 { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }
+    XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=0 { spawn "swayosd-client" "--output-volume" "raise"; }
+    XF86AudioStop allow-when-locked=true { spawn "playerctl" "pause"; }
+    XF86MonBrightnessDown allow-when-locked=true cooldown-ms=0 { spawn "swayosd-client" "--brightness" "lower"; }
+    XF86MonBrightnessUp allow-when-locked=true cooldown-ms=0 { spawn "swayosd-client" "--brightness" "raise"; }
+}
+spawn-at-startup "swww-daemon"
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "SWAYSOCK" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE" "NIXOS_OZONE_WL" "XCURSOR_THEME" "XCURSOR_SIZE" "XDG_DATA_DIRS" "FLAKE" "PATH"
+window-rule {
+    open-maximized true
+    geometry-corner-radius 5.000000 5.000000 5.000000 5.000000
+    clip-to-geometry true
+}
+animations { slowdown 1.000000; }

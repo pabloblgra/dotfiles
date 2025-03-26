@@ -1,0 +1,26 @@
+[package]
+name = "chrono-tz"
+version = "0.5.3"
+authors = ["Djzin"]
+build = "build.rs"
+description = "TimeZone implementations for rust-chrono from the IANA database"
+keywords = ["date", "time", "timezone", "zone", "calendar"]
+repository = "https://github.com/djzin/chrono-tz"
+documentation = "https://docs.rs/chrono-tz"
+readme = "README.md"
+license = "MIT/Apache-2.0"
+
+[dependencies]
+chrono = { version = "0.4", default-features = false }
+serde = { version = "1", optional = true, default-features = false }
+
+[features]
+default = ["std"]
+std = []
+
+[build-dependencies]
+parse-zoneinfo = { version = "0.3" }
+
+[dev-dependencies]
+serde_test = "1"
+chrono = { version = "0.4", default-features = false, features = ["alloc"] }
